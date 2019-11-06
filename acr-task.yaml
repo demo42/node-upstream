@@ -2,9 +2,9 @@ version: v1.0.0
 steps:
   - build: >
       -f ./Dockerfile
-      -t {{.Run.Registry}}/upstream/node:{{.Run.ID}}
-      -t {{.Run.Registry}}/upstream/node:9-alpine
+      -t {{.Run.Registry}}/library/node:{{.Run.ID}}
+      -t {{.Run.Registry}}/library/node:9-alpine
       .
   - push: 
-    - "{{.Run.Registry}}/upstream/node:{{.Run.ID}}"
-    - "{{.Run.Registry}}/upstream/node:9-alpine"
+    - "{{.Run.Registry}}/library/node:{{.Run.ID}}"
+    - "{{.Run.Registry}}/library/node:9-alpine"
