@@ -25,6 +25,8 @@ export ACR_NAME_UPSTREAM=demo42upstream
                   --vault-name $AKV_NAME \
                   --name $GIT_TOKEN_NAME \
                   --query value -o tsv)
+  az acr task \
+    list-runs
   ```
 - Run the task
 
