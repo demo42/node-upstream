@@ -1,10 +1,10 @@
-version: v1.0.0
+version: v1.1.0
 steps:
   - build: >
       -f ./Dockerfile
-      -t {{.Run.Registry}}/library/node:{{.Run.ID}}
-      -t {{.Run.Registry}}/library/node:9-alpine
+      -t $Registry/hub/node:{{.Run.ID}}
+      -t $Registry/hub/node:9-alpine
       .
   - push: 
-    - "{{.Run.Registry}}/library/node:{{.Run.ID}}"
-    - "{{.Run.Registry}}/library/node:9-alpine"
+    - "$Registry/hub/node:{{.Run.ID}}"
+    - "$Registry/hub/node:9-alpine"

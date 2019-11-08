@@ -16,15 +16,15 @@ source ./upstream-node/env.sh
   export ACR_NAME_UPSTREAM=demo42t
 
   az acr task create \
-    -n node-public \
-    -r ${ACR_NAME_UPSTREAM} \
+    --name public-node \
+    --image hub/node:9-alpine \
+    --registry ${ACR_UPSTREAM_NAME} \
     -f acr-task.yaml \
     --context ${GIT_UPSTREAM_NODE} \
     --git-access-token $(az keyvault secret show \
-                  --vault-name $AKV_NAME \
-                  --name $GIT_TOKEN_NAME \
-                  --query value -o tsv)
-
+                          --vault-name $AKV_NAME \
+                          --name github-token \
+                          --query value -o tsv)
   ```
 - Run the Task
 
