@@ -13,14 +13,10 @@ source ./upstream-node/env.sh
 - Set the registry to upstream registry:
 
   ```sh
-  export ACR_NAME_UPSTREAM=demo42t
-
   az acr task create \
-    --name public-node \
-    --image hub/node:9-alpine \
-    --registry ${ACR_UPSTREAM_NAME} \
+    --name node-hub \
     -f acr-task.yaml \
-    --context ${GIT_UPSTREAM_NODE} \
+    --context ${GIT_NODE_UPSTREAM} \
     --git-access-token $(az keyvault secret show \
                           --vault-name $AKV_NAME \
                           --name github-token \
@@ -29,8 +25,8 @@ source ./upstream-node/env.sh
 - Run the Task
 
   ```sh
-  az acr task run -r ${ACR_NAME_UPSTREAM} -n node-upstream
-
+  az acr task run --name node-hub
+  
   watch -n1 az acr task list-runs
   ```
 
